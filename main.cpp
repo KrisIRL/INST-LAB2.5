@@ -11,7 +11,7 @@
 #include "C12832_lcd.h"
 
 // LCD object
-C12832_LCD LCD("LCD");
+C12832_LCD LCD;
 
 AnalogIn Pot1(p19);
 AnalogIn Pot2(p20);
@@ -29,7 +29,7 @@ void thread1(void const *args)
         lcd_mutex.lock();
         LCD.locate(0,0);
         LCD.set_font((unsigned char*) Small_6);
-        printf("Thread1 count: %d",i);
+        LCD.printf("Thread1 count: %d",i);
         lcd_mutex.unlock();
         i++;
         Thread::wait(1000);
@@ -45,7 +45,7 @@ void thread2(void const *args)
         lcd_mutex.lock();
         LCD.locate(0,20);
         LCD.set_font((unsigned char*) Arial_9);
-        printf("Thread 2 count : %d",k);
+        LCD.printf("Thread 2 count : %d",k);
         lcd_mutex.unlock();
         k++;
         Thread::wait(500); // wait 0.5s
@@ -111,7 +111,7 @@ int main()
         LCD.locate(0,9);
         LCD.set_font((unsigned char*) Small_7);
         j = LCD.get_contrast();    // read the actual contrast
-        printf("contrast : %d",j);
+        LCD.printf("contrast : %d",j);
         lcd_mutex.unlock();
         Thread::wait(500);   // wait 0.5s
     }
