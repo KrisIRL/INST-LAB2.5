@@ -107,6 +107,7 @@ void thread4(void const *args)
 }
 
 // Thread 5
+// joystick function
 void thread5(void const *args){
        while(1) {
         if (fire) {
