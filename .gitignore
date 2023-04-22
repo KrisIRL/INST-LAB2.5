@@ -1,0 +1,9 @@
+BUILD
+?mbed
+?clangd
+compile_commands?json
+?cache
+C12832_lcd
+LCD_fonts
+mbed-rtos
+mbed
